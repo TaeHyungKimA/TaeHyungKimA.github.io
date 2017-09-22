@@ -5,13 +5,10 @@ permalink: /about/
 ---
 <div class="mt50"></div>
 
-Webjeda Gatok is a Bootstrap based theme. Any Bootstrap element can be used in the theme.
-
-
 -------------------------------------------------------------------  
 김 태 형(Tae Hyung Kim), MS student.
 
-Email. boysboy1@sogang.ac.kr 
+Email : boysboy1@sogang.ac.kr 
 
 서강대학교 영상대학원 영상공학전공 
 
