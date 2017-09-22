@@ -1,9 +1,10 @@
 ---
 layout: post
-title: 축하해 이건 내 첫번째 글이야
+title: My First 
 ---
 
 ##만나서 반갑습니다 MeKai 입니다.
 
-**블로그 만드는것을 성공했네요 ㅎㅎ**
+제가 공부했던 부분들을 정리하는 공간으로 이용할 예정입니다.
+주로 다룰 내용의 주제들을 Machine Learning, Deep Learning, Computter Vision 입니다.
 
