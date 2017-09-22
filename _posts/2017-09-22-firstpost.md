@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Documentation
+title: 축하해 이건 내 첫번째 글이야
 ---
 
 ##만나서 반갑습니다 MeKai 입니다.
