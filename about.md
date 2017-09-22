@@ -18,4 +18,4 @@ Email. boysboy1@sogang.ac.kr
 Vision Graphics Lab., Graduate School of Media, Sogang University. 
 
 
-![Gatok Jekyll Theme]({{site.baseurl}}/images/gatok5.jpg)
+({{site.baseurl}}/images/gatok5.jpg)
