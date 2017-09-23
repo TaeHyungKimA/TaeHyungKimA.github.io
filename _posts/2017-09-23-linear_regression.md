@@ -3,7 +3,7 @@ layout: post
 title: Linear Regression 
 ---
 
-##이번시간에는 Linear Regression대해 다뤄볼 예정입니다.
+**++이번시간에는 Linear Regression대해 다뤄볼 예정입니다.++**
 
  
 Regression : x(data)-> y
