@@ -21,25 +21,37 @@ Classification : x -> y(가나올확률)
 
 
 _ _ _
+
 ![Gatok Jekyll Theme]({{site.baseurl}}/./images/linear1.jpg)
     [Linear Data Example]
+    
 _ _ _
 
 이러한 데이터들을 어떻게 잘 fit 시킬수 있을까?
+
+
 _ _ _
+
 ![Gatok Jekyll Theme]({{site.baseurl}}/./images/linear2.jpg)
     [Linear Data fit]
+    
 _ _ _
 
-위 그림처럼 Data(x)가 있고, 
+위 그림처럼 Data(x)가 있고,
+
 정답 Label(y)이 있을경우 Data(x)로 부터 Label(y)을 예측하는것을
+
 만드는것부터 출발합니다.
 
+
 Model 설계 (hypothesis)
-y = ax + b  (a는 기울기 b는 bias)
+[y = ax + b  (a는 기울기 b는 bias)]
+
 _ _ _
+
 ![Gatok Jekyll Theme]({{site.baseurl}}/./images/linear3.jpg)
     [Linear Data fit]
+    
 _ _ _
 우리가 원하는건 True model처럼 fit을 시키는 것인데,
 Hypothesis를 True model와 근사하게 만들기 위하여
