@@ -14,6 +14,6 @@ Linear Regression Model이란 ?
 ->선형회귀라고 표현하며, 선형적인 데이터를 분석하고 예측하기 위한 모델입니다
 
 
-![Gatok Jekyll Theme]({{site.baseurl}}/images/linear1.png)
+![Gatok Jekyll Theme]({{site.baseurl}}/images/linear1.jpg)
     [Linear Data]
 
