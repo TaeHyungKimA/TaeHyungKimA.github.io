@@ -22,9 +22,9 @@ Classification : x -> y(가나올확률)
 
 _ _ _
 
-![Gatok Jekyll Theme]({{site.baseurl}}/./images/linear1.JPG)
+![Gatok Jekyll Theme]({{site.baseurl}}/./images/linear1.jpg)
 
-    [Linear Data Example]
+   
     
 _ _ _
 
@@ -33,9 +33,9 @@ _ _ _
 
 _ _ _
 
-![Gatok Jekyll Theme]({{site.baseurl}}/./images/linear2.JPG)
+![Gatok Jekyll Theme]({{site.baseurl}}/./images/linear2.jpg)
 
-    [Linear Data fit]
+   
     
 _ _ _
 
