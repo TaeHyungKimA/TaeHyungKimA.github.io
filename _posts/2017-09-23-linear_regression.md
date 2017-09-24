@@ -14,7 +14,7 @@ Classification : x -> y(가나올확률)
 
 
 
-++==Linear Regression Model이란 ?==++
+==[Linear Regression Model]()이란 ?==
 
 선형회귀라고 표현하며, 선형적인 데이터를 분석하고 예측하기 위한 모델입니다
 
@@ -23,6 +23,7 @@ Classification : x -> y(가나올확률)
 _ _ _
 
 ![Gatok Jekyll Theme]({{site.baseurl}}/./images/linear1.jpg)
+
     [Linear Data Example]
     
 _ _ _
@@ -33,6 +34,7 @@ _ _ _
 _ _ _
 
 ![Gatok Jekyll Theme]({{site.baseurl}}/./images/linear2.jpg)
+
     [Linear Data fit]
     
 _ _ _
@@ -60,7 +62,8 @@ Hypothesis를 True model와 근사하게 만들기 위하여
 
 cost(error) function을 정의한다
 
-cost(L1) 
+cost(L1)
+
 $$
 \sqrt{3x-1}+(1+x)^2
 $$
