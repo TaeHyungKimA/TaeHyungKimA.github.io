@@ -60,7 +60,7 @@ Hypothesis를 True model와 근사하게 만들기 위하여
 
 cost(error) function을 정의한다
 
-cost(L1) = $$\sqrt{3x-1}+(1+x)^2$$
+cost(L1) = $$$\sqrt{3x-1}+(1+x)^2$$$
 
 cost(L2) = 
 
