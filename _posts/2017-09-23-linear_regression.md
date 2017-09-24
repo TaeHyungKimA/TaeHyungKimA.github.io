@@ -50,7 +50,7 @@ Model 설계 (hypothesis)
 
 _ _ _
 
-![Gatok Jekyll Theme]({{site.baseurl}}/./images/linear3.jpg)
+![Gatok Jekyll Theme]({{site.baseurl}}/./images/linear3.JPG)
     [Linear Data fit]
     
 _ _ _
