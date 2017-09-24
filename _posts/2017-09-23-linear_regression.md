@@ -45,6 +45,7 @@ _ _ _
 
 
 Model 설계 (hypothesis)
+
 [y = ax + b  (a는 기울기 b는 bias)]
 
 _ _ _
@@ -54,10 +55,15 @@ _ _ _
     
 _ _ _
 우리가 원하는건 True model처럼 fit을 시키는 것인데,
+
 Hypothesis를 True model와 근사하게 만들기 위하여
+
 cost(error) function을 정의한다
 
 cost(L1) = $\sqrt{3x-1}+(1+x)^2$
+
 cost(L2) = 
+
 우리의 최종목적은 cost가 0에 근사하는 a와 b값을 구하는 것이
+
 Linear Regression의 학습의 목표이다.
