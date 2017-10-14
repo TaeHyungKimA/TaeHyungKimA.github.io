@@ -3,6 +3,8 @@ layout: post
 title: Deep Neural Network(Pima dataset)
 ---
 
+
+
 <td>**이번시간에는 Pima dataset을 이용한 DNN(Deep Neural Network)에 대하여 알아볼 예정입니다.**</td>
 
 
@@ -31,7 +33,7 @@ _ _ _
 
 _ _ _
 
-![Gatok Jekyll Theme]({{site.baseurl}}/./images/linear2.jpg)
+![Gatok Jekyll Theme]({{site.baseurl}}/./images/linear2.JPG)
 
    
     
