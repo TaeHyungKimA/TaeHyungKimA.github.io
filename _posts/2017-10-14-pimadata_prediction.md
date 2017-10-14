@@ -3,12 +3,13 @@ layout: post
 title: Deep Neural Network(Pima dataset)
 ---
 
-
+</n>
 
 <td>**이번시간에는 Pima dataset을 이용한 DNN(Deep Neural Network)에 대하여 알아볼 예정입니다.**</td>
 
 
 
+<\n>
 
 
 
@@ -22,7 +23,7 @@ Multilayer Perceptrons라고도 표현하며,
 
 _ _ _
 
-![Gatok Jekyll Theme]({{site.baseurl}}/./images/nn1.jpg)
+![Gatok Jekyll Theme]({{site.baseurl}}/./images/nn1.JPG)
 
    
     
