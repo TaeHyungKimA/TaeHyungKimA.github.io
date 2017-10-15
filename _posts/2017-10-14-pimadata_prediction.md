@@ -3,173 +3,142 @@ layout: post
 title: Deep Neural Network(Pima dataset)
 ---
 
-</n>
+
 
 <td>**이번시간에는 Pima dataset을 이용한 DNN(Deep Neural Network)에 대하여 알아볼 예정입니다.**</td>
 
 
 
-<\n>
-
-
-
-
-++[Deep Neural Network]()란 ?++
-
-Multilayer Perceptrons라고도 표현하며, 
-여러개의 Hidden layer을 쌓아서 여러개의 가중치(weight) 합이 최종 Output결과로 나오게 된다.
 
 
 
 _ _ _
 
-![Gatok Jekyll Theme]({{site.baseurl}}/./images/nn1.JPG)
 
-   
-    
-_ _ _
+![Gatok Jekyll Theme]({{site.baseurl}}/./images/pima1.JPG)
 
-이러한 데이터들을 어떻게 잘 fit 시킬수 있을까?
 
 
 _ _ _
 
-![Gatok Jekyll Theme]({{site.baseurl}}/./images/linear2.JPG)
-
-   
-    
-_ _ _
-
-위 그림처럼 Data(x)가 있고,
-
-정답 Label(y)이 있을경우 Data(x)로 부터 Label(y)을 예측하는것을
-
-만드는것부터 출발합니다.
+![Gatok Jekyll Theme]({{site.baseurl}}/./images/pima2.JPG)
 
 
-Model 설계 (hypothesis)
 
-[y = ax + b  (a는 기울기 b는 bias)]
 
 _ _ _
 
-![Gatok Jekyll Theme]({{site.baseurl}}/./images/linear3.JPG)
-    
-    
+![Gatok Jekyll Theme]({{site.baseurl}}/./images/pima3.JPG)
+
+
 _ _ _
-![Gatok Jekyll Theme]({{site.baseurl}}/./images/linear4.JPG)
+
+![Gatok Jekyll Theme]({{site.baseurl}}/./images/pima4.JPG)
 
 
-![Gatok Jekyll Theme]({{site.baseurl}}/./images/linear5.JPG)
 
 
-![Gatok Jekyll Theme]({{site.baseurl}}/./images/linear6.JPG)
+_ _ _
+
+![Gatok Jekyll Theme]({{site.baseurl}}/./images/pima5.JPG)
 
 
-![Gatok Jekyll Theme]({{site.baseurl}}/./images/linear7.JPG)
 
-![Gatok Jekyll Theme]({{site.baseurl}}/./images/linear8.JPG)
+
+_ _ _
+
+
+![Gatok Jekyll Theme]({{site.baseurl}}/./images/pima6.JPG)
+
+
+
+
+_ _ _
+
 
 
 
 지금까지 했던 내용을 코드화 시켜보면 아래와 같다.
 ```
-# Linear Regression with Gradient Descent
-import matplotlib.pyplot as plt
-import numpy as np
-import random
-import math
+from keras.models import Sequential
+from keras.layers import Dense
+import numpy as np 
+import pandas as pd
+from sklearn.cross_validation import train_test_split
+from keras.callbacks import EarlyStopping
+from keras.layers import Dense, Dropout, Activation, Flatten
 
 
-def dataNormalization(x):
-    x_average = 0 #Data 평균값
-    x_var = 0     #Data 분산값
-    x_delta = 0
-    x_prime = []  #Data 정규화
-    
-    x_average = sum(x) / len(x)
-    
-    for k in x:
-        x_delta = x_delta + (k - x_average)**2
-    x_var = x_delta / len(x)
-    #x_delta = x_delta / len(x)
-    for k in range(len(x)):
-        x_prime.append((x[k]-x_average)/(math.sqrt(x_var)))
-    print("평균:",x_average,"분산:",x_var)
-    return x_prime
+#fix random seed for reproducibility
+seed = 7
+np.random.seed(seed)
 
-def L2gradient(X, Y, a, b):
-    loss = 0
-    gradient_a = 0
-    gradient_b = 0
-    for k in range(len(X)):
-        mk = X[k] * a + b
-        ek = Y[k] - mk
-        loss += ek ** 2
-        gradient_a += ek * (-X[k])
-        gradient_b += ek * (-1)
+
+#load pima indians dataset
+dataset = pd.read_csv("diabetes.csv")
+dataset = np.array(dataset)
+X = dataset[:,0:8]
+Y = dataset[:,8]
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.33, random_state = seed)
+
+
+
+# create model
+model = Sequential()
+#Dense 입출력 관련 (출력개수,입력개수,입력형상,활성화함수)  init:초기화 함수 이름 weight가 없을 때 적용
+model.add(Dense(8, input_dim=8, init='uniform', activation='relu'))
+model.add(Dense(18, init='uniform', activation='relu'))
+model.add(Dense(28, init='uniform', activation='relu'))
+model.add(Dense(1, init='uniform', activation='sigmoid'))
+
+
+# Compile model
+model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+
+# Fit the model
+#early_stopping = EarlyStopping(patience = 20) #조기 종료 시키기
+#model.fit(X_train, y_train, validation_data=(X_test,y_test), nb_epoch=150, batch_size=16, callbacks=[early_stopping])
+model.fit(X_train, y_train, validation_data=(X_test,y_test), nb_epoch=150, batch_size=50)
+
+
+
+#model evaluate()
+scores = model.evaluate(X_test, y_test)
+print("\n",scores,"\n",model.metrics_names)#merics 쟤다, 여기에 포함되어있음 loss,acc
+print("%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
+
+
+#model predict ->하면 일종의 probablity확률이 나옴
+y_out = model.predict(X_test)
+for k in range(y_out.shape[0]):
+    if y_out[k] > 0.5:
+        y_out[k] = 1
+    else:
+        y_out[k] = 0
+
+ 
+count = 0
+for k in range(y_out.shape[0]):
+    if (y_test[k]==1 and y_out[k] ==1) or (y_test[k] == 0 and y_out[k] ==0):
+        count +=1
         
-    return loss, gradient_a, gradient_b
- 
-def L1gradient(X, Y, a, b):
-    loss = 0
-    gradient_a = 0
-    gradient_b = 0
-    for k in range(len(X)):
-        mk = X[k] * a + b
-        ek = Y[k] - mk
-        loss += abs(ek)
-        if ek > 0:
-            gradient_a += (-X[k])
-            gradient_b += (-1)
-        elif ek < 0:
-            gradient_a += (X[k])
-            gradient_b += 1
-        elif ek == 0:
-            gradient_a += 0
-            gradient_b += 0
-            
-    return loss, gradient_a, gradient_b
- 
- 
-a_true = random.randint(1, 10)
-b_true = random.randint(1, 10)
+accuracy = (count/y_out.shape[0]) * 100
+print("Keras가 구한 정확도 %.2f%%" % (scores[1]*100))
+print("내가 구한 정확도:",accuracy)
 
-
-#x = [float(x)+np.random.normal() for x in range(-20, 20, 1)] #가우시안 노이즈 추가
-x = [random.randint(0, 10) for x in range(1000)]
-x = dataNormalization(x) # data normalization
-y = [a_true * xi+b_true for xi in x]
-print(x)
-print(y)
- 
-
-#fitting ->초기값도 잘바꿔서 테스트해볼수 있다
-a_hat = 1.
-b_hat = 1.
-learning_rate = 1e-4
-loss_graph = []
-#update a_hat,b_hat
-for iter in range(10000):
-    loss,gradient_a,gradient_b = L1gradient(x, y, a_hat, b_hat) #L2gradient로 바꿔서 테스트
-    loss_graph.append(loss)
-    print("iter %d : loss = %f, a=%f b=%f" % (iter,loss,a_hat,b_hat))
-    a_hat = a_hat - gradient_a * learning_rate
-    b_hat = b_hat - gradient_b * learning_rate
- 
-
- 
-print("iter final : loss = %e, a=%f b=%f" % (loss,a_hat,b_hat))
-plt.plot(loss_graph)
-plt.show()
-
-y_ = [X*a_hat + b_hat for X in x]
-plt.scatter(x,y)
-plt.plot(x,y, 'r',label='a=true,b=true')
-plt.plot(x,y_, 'y', label='a=a_hat,b=b_hat')
-plt.legend()
-plt.show()
 
 
 
 ```
+
+
+_ _ _
+
+
+![Gatok Jekyll Theme]({{site.baseurl}}/./images/pima7.JPG)
+
+
+
+
+_ _ _
